@@ -1,0 +1,169 @@
+{
+  "stage": 2,
+  "id": "stage02",
+  "title": "角度の錬金術",
+  "maxHands": 6,
+
+  "goal": "△ABD ≡ △ACE",
+
+  "condition": "2組の辺とその間の角がそれぞれ等しい",
+
+  "figureFacts": [
+    "AB = AC",
+    "AD = AE",
+    "∠BAC = 90°",
+    "∠DAE = 90°"
+  ],
+
+  "cards": [
+    {
+      "id": "ab_ac",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AB = AC",
+      "highlight": [
+        "line_AB",
+        "line_AC"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "ad_ae",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AD = AE",
+      "highlight": [
+        "line_AD",
+        "line_AE"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "angle_bad_sub",
+      "type": "角",
+      "icon": "角",
+      "text": "∠BAD = 90° - ∠CAD",
+      "highlight": [
+        "angle_BAD",
+        "angle_CAD"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "angle_cae_sub",
+      "type": "角",
+      "icon": "角",
+      "text": "∠CAE = 90° - ∠CAD",
+      "highlight": [
+        "angle_CAE",
+        "angle_CAD"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "angle_bad_cae",
+      "type": "角",
+      "icon": "角",
+      "text": "∠BAD = ∠CAE",
+      "highlight": [
+        "angle_BAD",
+        "angle_CAE"
+      ],
+      "usable": false,
+      "locked": true
+    }
+  ],
+
+  "correctCombo": [
+    "ab_ac",
+    "ad_ae",
+    "angle_bad_cae"
+  ],
+
+  "unlockRules": [
+    {
+      "requiredCards": [
+        "angle_bad_sub",
+        "angle_cae_sub"
+      ],
+      "unlockCard": "angle_bad_cae"
+    }
+  ],
+
+  "dummyCards": [
+    {
+      "id": "angle_bac_dae",
+      "type": "角",
+      "icon": "角",
+      "text": "∠BAC = ∠DAE",
+      "highlight": [
+        "angle_BAC",
+        "angle_DAE"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "angle_bad_cad",
+      "type": "角",
+      "icon": "角",
+      "text": "∠BAD = ∠CAD",
+      "highlight": [
+        "angle_BAD",
+        "angle_CAD"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "bd_ce",
+      "type": "辺",
+      "icon": "辺",
+      "text": "BD = CE",
+      "highlight": [
+        "line_BD",
+        "line_CE"
+      ],
+      "usable": true
+    }
+  ],
+
+  "congruenceCards": [
+    {
+      "id": "sss",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "3組の辺がそれぞれ等しい"
+    },
+    {
+      "id": "sas",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "2組の辺とその間の角がそれぞれ等しい"
+    },
+    {
+      "id": "asa",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "1組の辺とその両端の角がそれぞれ等しい"
+    },
+    {
+      "id": "rhs_acute",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と1つの鋭角がそれぞれ等しい"
+    },
+    {
+      "id": "rhs_leg",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と他の1辺がそれぞれ等しい"
+    }
+  ],
+
+  "correctCongruenceCard": "sas"
+}

@@ -1,0 +1,2859 @@
+/* ============================================================
+   Proof Quest
+   Game UI Style
+   Version 3
+   Viewport Fit Edition
+   ============================================================ */
+
+
+/* ============================================================
+   基本設定
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100%;
+
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    sans-serif;
+
+  color: #172033;
+
+  background: #f4f5f7;
+
+  font-size: 20px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   ヘッダー
+============================================================ */
+
+.game-header {
+  min-height: 92px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1.35fr
+    0.65fr;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 10px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #073b88,
+      #1264bd 55%,
+      #0b3e83
+    );
+
+  border-bottom:
+    4px solid #d7a72f;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.22);
+
+  color: #fff;
+}
+
+
+/* ============================================================
+   ロゴ
+============================================================ */
+
+.game-title {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.game-title h1 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 32px;
+
+  line-height: 1.1;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  color: #fff;
+
+  text-shadow:
+    2px 3px 0 #082b5d;
+}
+
+.game-title p {
+  margin: 3px 0 0;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #dcecff;
+}
+
+
+/* ============================================================
+   Stage情報
+============================================================ */
+
+.stage-info {
+  min-height: 68px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 8px 28px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #d92822,
+      #a70f12
+    );
+
+  border:
+    3px solid #f3c34e;
+
+  clip-path:
+    polygon(
+      6% 0,
+      94% 0,
+      100% 50%,
+      94% 100%,
+      6% 100%,
+      0 50%
+    );
+
+  box-shadow:
+    0 4px 0 #711016,
+    0 7px 12px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+}
+
+#stage-number {
+  font-size: 13px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  color: #ffe49a;
+}
+
+#stage-title {
+  margin-top: 3px;
+
+  font-size: 22px;
+
+  line-height: 1.2;
+
+  font-weight: 900;
+
+  color: #fff;
+
+  text-shadow:
+    1px 2px 0 #72100e;
+}
+
+
+/* ============================================================
+   残り手数
+============================================================ */
+
+.turn-info {
+  min-height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 8px 14px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #eaf0f7
+    );
+
+  border:
+    3px solid #d5a72c;
+
+  border-radius: 15px;
+
+  color: #123b75;
+
+  box-shadow:
+    inset 0 0 0 2px #fff,
+    0 4px 8px rgba(0, 0, 0, 0.22);
+}
+
+.turn-label {
+  font-size: 14px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+#remaining-hands,
+#turn-count {
+  font-size: 32px;
+
+  line-height: 1;
+
+  font-weight: 1000;
+
+  color: #0877d1;
+}
+
+
+/* ============================================================
+   メインゲームエリア
+============================================================ */
+
+.game-main {
+  width:
+    calc(100% - 28px);
+
+  margin:
+    12px auto;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(330px, 1.05fr)
+    minmax(360px, 1fr)
+    minmax(330px, 0.95fr);
+
+  gap:
+    12px;
+
+  /*
+    ヘッダー約92px
+    フッター約60px
+    上下余白を考慮
+  */
+  height:
+    calc(100vh - 190px);
+
+  min-height:
+    0;
+}
+
+
+/* ============================================================
+   パネル共通
+============================================================ */
+
+.diagram-panel,
+.proof-panel,
+.cards-panel {
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 0;
+
+  background: #fff;
+
+  border:
+    3px solid #d0a53a;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ============================================================
+   図形パネル
+============================================================ */
+
+.diagram-panel {
+  border-color:
+    #8d6237;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+}
+
+
+/* ============================================================
+   パネルタイトル
+============================================================ */
+
+.panel-title,
+.panel-header {
+  position:
+    relative;
+
+  flex-shrink:
+    0;
+}
+
+
+/* ============================================================
+   図形タイトル
+============================================================ */
+
+.panel-title {
+  padding:
+    11px 18px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #8b5e34,
+      #67401f
+    );
+
+  color:
+    #fff;
+
+  font-size:
+    21px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    1000;
+
+  text-align:
+    center;
+
+  border-bottom:
+    3px solid #d8aa48;
+
+  text-shadow:
+    1px 2px 0 #432a16;
+}
+
+
+/* ============================================================
+   中央・右パネルヘッダー
+============================================================ */
+
+.panel-header {
+  padding:
+    12px 18px;
+
+  background:
+    linear-gradient(
+      to right,
+      #0b55a3,
+      #1976d2
+    );
+
+  color:
+    #fff;
+
+  border-bottom:
+    3px solid #d5a72c;
+}
+
+.panel-header h2 {
+  margin:
+    0;
+
+  font-size:
+    21px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    1000;
+}
+
+.panel-header p {
+  margin:
+    5px 0 0;
+
+  font-size:
+    14px;
+
+  line-height:
+    1.35;
+
+  font-weight:
+    700;
+
+  color:
+    #e8f3ff;
+}
+
+
+/* ============================================================
+   右カードパネル
+============================================================ */
+
+.green-header {
+  background:
+    linear-gradient(
+      to right,
+      #176b54,
+      #22916e
+    );
+
+  border-bottom-color:
+    #d8b04b;
+}
+
+
+/* ============================================================
+   図形表示エリア
+============================================================ */
+
+#svg-container {
+  flex:
+    1;
+
+  min-height:
+    0;
+
+  height:
+    auto;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    10px;
+
+  background:
+    #fff;
+
+  color:
+    #777;
+
+  font-size:
+    16px;
+
+  overflow:
+    hidden;
+}
+
+
+/*
+  SVGそのもの
+*/
+
+#svg-container svg {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  max-width:
+    100%;
+
+  max-height:
+    100%;
+
+  object-fit:
+    contain;
+}
+
+
+/*
+  SVGハイライト
+
+  stage03-1.svg / stage03-2.svg
+  の .highlight と共存する。
+*/
+
+#svg-container .highlight {
+  stroke:
+    #00bcd4 !important;
+
+  stroke-width:
+    8 !important;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(0, 188, 212, 0.65)
+    );
+}
+
+
+/* ============================================================
+   図形について
+============================================================ */
+
+.figure-facts {
+  margin:
+    0;
+
+  padding:
+    0 12px 12px;
+
+  background:
+    #fff;
+
+  flex-shrink:
+    0;
+}
+
+.sub-panel-title {
+  margin-bottom:
+    7px;
+
+  padding:
+    7px 11px;
+
+  background:
+    #f0e3d2;
+
+  border-left:
+    4px solid #8b5e34;
+
+  border-radius:
+    6px;
+
+  color:
+    #654321;
+
+  font-size:
+    14px;
+
+  font-weight:
+    1000;
+}
+
+.facts-list {
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    5px 7px;
+}
+
+.figure-fact {
+  padding:
+    6px 8px;
+
+  background:
+    #faf7f2;
+
+  border:
+    1px solid #d9c4a8;
+
+  border-radius:
+    6px;
+
+  color:
+    #493a2b;
+
+  font-size:
+    13px;
+
+  font-weight:
+    800;
+
+  line-height:
+    1.3;
+}
+
+
+/* ============================================================
+   証明パネル
+============================================================ */
+
+.proof-panel {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #f8fafc
+    );
+}
+
+
+/* ============================================================
+   ゴール
+============================================================ */
+
+.goal-text,
+#goal {
+  margin:
+    6px 0 0;
+
+  font-size:
+    26px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    1000;
+
+  color:
+    #fff;
+
+  letter-spacing:
+    1px;
+}
+
+
+/* ============================================================
+   必要な証拠
+============================================================ */
+
+.congruence-area {
+  padding:
+    12px 16px 7px;
+
+  flex-shrink:
+    0;
+}
+
+.section-ribbon,
+.congruence-label {
+  display:
+    inline-block;
+
+  padding:
+    6px 14px;
+
+  margin-bottom:
+    8px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #b47a22,
+      #805112
+    );
+
+  border-radius:
+    7px;
+
+  color:
+    #fff;
+
+  font-size:
+    15px;
+
+  font-weight:
+    1000;
+
+  box-shadow:
+    2px 3px 0 #5b370b;
+}
+
+
+/* ============================================================
+   証拠スロット
+============================================================ */
+
+.evidence-slots {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    7px;
+}
+
+.evidence-slot {
+  min-height:
+    58px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    7px 10px;
+
+  background:
+    linear-gradient(
+      to right,
+      #fffdf7,
+      #fff8e9
+    );
+
+  border:
+    2px dashed #d6a52e;
+
+  border-radius:
+    9px;
+
+  color:
+    #777;
+
+  font-size:
+    16px;
+
+  font-weight:
+    900;
+
+  transition:
+    0.2s ease;
+}
+
+
+/*
+  スロット番号
+*/
+
+.evidence-slot .slot-number,
+.evidence-slot > span:first-child {
+  width:
+    34px;
+
+  height:
+    34px;
+
+  flex-shrink:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #e8b83d,
+      #ad7311
+    );
+
+  color:
+    #fff;
+
+  font-size:
+    17px;
+
+  font-weight:
+    1000;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+/*
+  証拠が入った状態
+*/
+
+.evidence-slot.filled {
+  border-style:
+    solid;
+
+  border-color:
+    #16a6c7;
+
+  background:
+    linear-gradient(
+      to right,
+      #e9fbff,
+      #d9f5fb
+    );
+
+  color:
+    #075c73;
+
+  box-shadow:
+    0 0 0 2px rgba(22,166,199,0.12),
+    0 3px 8px rgba(22,166,199,0.15);
+}
+
+.evidence-slot.filled .slot-number {
+  background:
+    linear-gradient(
+      to bottom,
+      #19b7d5,
+      #087d9b
+    );
+}
+
+.slot-card-name {
+  font-size:
+    18px;
+
+  font-weight:
+    1000;
+}
+
+
+/* ============================================================
+   合同条件エリア
+============================================================ */
+
+.condition-area {
+  margin:
+    6px 16px 9px;
+
+  padding:
+    9px;
+
+  background:
+    #fffaf0;
+
+  border:
+    2px solid #d6a52e;
+
+  border-radius:
+    10px;
+
+  text-align:
+    center;
+
+  flex-shrink:
+    0;
+}
+
+.condition-label {
+  margin-bottom:
+    7px;
+
+  text-align:
+    center;
+
+  font-size:
+    15px;
+
+  font-weight:
+    1000;
+
+  color:
+    #775c20;
+}
+
+.condition-display {
+  margin-top:
+    4px;
+
+  font-size:
+    22px;
+
+  line-height:
+    1.3;
+
+  font-weight:
+    1000;
+
+  color:
+    #bd3025;
+
+  letter-spacing:
+    1px;
+}
+
+
+/* ============================================================
+   メッセージ
+============================================================ */
+
+.game-message,
+#game-message {
+  margin:
+    auto 16px 14px;
+
+  min-height:
+    72px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    12px;
+
+  background:
+    linear-gradient(
+      to right,
+      #eef7ff,
+      #ffffff
+    );
+
+  border:
+    3px solid #8ebeea;
+
+  border-radius:
+    12px;
+
+  color:
+    #174d7d;
+
+  font-size:
+    17px;
+
+  line-height:
+    1.4;
+
+  font-weight:
+    900;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 3px 8px rgba(0,0,0,0.08);
+}
+
+
+/*
+  キャラクター非表示
+*/
+
+.mascot {
+  display:
+    none !important;
+}
+
+
+/* ============================================================
+   カードエリア
+============================================================ */
+
+.cards-panel {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+}
+
+.cards-container,
+#cards {
+  flex:
+    1;
+
+  min-height:
+    0;
+
+  padding:
+    11px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    8px;
+
+  overflow-y:
+    auto;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #f6faf8
+    );
+}
+
+
+/* ============================================================
+   証拠カード
+============================================================ */
+
+.proof-card,
+.evidence-card {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  min-height:
+    82px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  grid-template-rows:
+    auto
+    auto
+    auto;
+
+  column-gap:
+    10px;
+
+  align-items:
+    center;
+
+  padding:
+    10px 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f4f8fc
+    );
+
+  border:
+    3px solid #b8c8dc;
+
+  border-radius:
+    11px;
+
+  color:
+    #182338;
+
+  text-align:
+    left;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+
+/*
+  ホバー
+*/
+
+.proof-card:hover:not(:disabled),
+.evidence-card:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    #248be0;
+
+  box-shadow:
+    0 5px 11px
+    rgba(30, 110, 210, 0.22);
+
+  background:
+    #f4faff;
+}
+
+
+/*
+  カードタイプ
+*/
+
+.card-type {
+  grid-column:
+    1;
+
+  font-size:
+    12px;
+
+  color:
+    #2774b9;
+
+  font-weight:
+    1000;
+}
+
+
+/*
+  カード名
+*/
+
+.card-name {
+  grid-column:
+    1;
+
+  font-size:
+    17px;
+
+  line-height:
+    1.3;
+
+  font-weight:
+    1000;
+
+  color:
+    #123e76;
+}
+
+
+/*
+  数式
+*/
+
+.card-text {
+  grid-column:
+    1;
+
+  font-size:
+    20px;
+
+  line-height:
+    1.3;
+
+  font-weight:
+    1000;
+
+  color:
+    #182033;
+}
+
+
+/*
+  「選ぶ」
+*/
+
+.proof-card::after,
+.evidence-card::after {
+  content:
+    "選ぶ";
+
+  grid-column:
+    2;
+
+  grid-row:
+    1 / span 3;
+
+  align-self:
+    center;
+
+  padding:
+    7px 10px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #8c4cd4,
+      #5d238f
+    );
+
+  border-radius:
+    8px;
+
+  color:
+    white;
+
+  font-size:
+    13px;
+
+  font-weight:
+    1000;
+
+  white-space:
+    nowrap;
+
+  box-shadow:
+    0 3px 0 #3f1764;
+}
+
+
+/* ============================================================
+   選択済み
+============================================================ */
+
+.proof-card.selected,
+.evidence-card.selected {
+  border-color:
+    #12a8d4;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8fbff,
+      #d5f4fb
+    );
+
+  box-shadow:
+    0 0 0 3px
+    rgba(18,168,212,0.18),
+    0 5px 15px
+    rgba(18,168,212,0.2);
+}
+
+.proof-card.selected::after,
+.evidence-card.selected::after {
+  content:
+    "✓ 選択済み";
+
+  background:
+    linear-gradient(
+      to bottom,
+      #42a95b,
+      #197334
+    );
+
+  box-shadow:
+    0 3px 0 #115325;
+}
+
+
+/* ============================================================
+   正解カード
+============================================================ */
+
+.proof-card.correct,
+.evidence-card.correct {
+  border-color:
+    #19a8d4;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(25,168,212,0.22),
+    0 0 18px
+    rgba(25,168,212,0.28);
+}
+
+
+/* ============================================================
+   ダミーカード
+============================================================ */
+
+.dummy-card {
+  border-color:
+    #c9c0d6;
+}
+
+
+/* ============================================================
+   間違いカード
+============================================================ */
+
+.proof-card.wrong,
+.evidence-card.wrong {
+  border-color:
+    #d36b62;
+
+  background:
+    #fff2f0;
+
+  opacity:
+    0.7;
+}
+
+
+/* ============================================================
+   無効カード
+============================================================ */
+
+.proof-card:disabled,
+.evidence-card:disabled {
+  cursor:
+    default;
+}
+
+
+/* ============================================================
+   合同条件カードエリア
+============================================================ */
+
+.condition-card-area {
+  margin:
+    5px 11px 11px;
+
+  padding:
+    10px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f4f0ff,
+      #ebe5fa
+    );
+
+  border:
+    3px solid #8564b4;
+
+  border-radius:
+    11px;
+
+  box-shadow:
+    inset
+    0 0 0 2px
+    rgba(255,255,255,0.7);
+
+  flex-shrink:
+    0;
+}
+
+
+/*
+  タイトル
+*/
+
+.condition-card-title {
+  padding-bottom:
+    4px;
+
+  color:
+    #4d3276;
+
+  font-size:
+    16px;
+
+  font-weight:
+    1000;
+
+  text-align:
+    center;
+}
+
+
+/*
+  説明
+*/
+
+.condition-card-description {
+  margin-bottom:
+    7px;
+
+  color:
+    #685b78;
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+
+  text-align:
+    center;
+}
+
+
+/*
+  条件カード一覧
+*/
+
+.condition-cards {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap:
+    6px;
+}
+
+
+/*
+  条件カード
+*/
+
+.condition-card {
+  width:
+    100%;
+
+  min-height:
+    48px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    7px;
+
+  padding:
+    7px 8px;
+
+  background:
+    linear-gradient(
+      to right,
+      #ffffff,
+      #f7f2ff
+    );
+
+  border:
+    2px solid #b6a4d1;
+
+  border-radius:
+    8px;
+
+  color:
+    #43315c;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.3;
+
+  font-weight:
+    900;
+
+  text-align:
+    left;
+
+  cursor:
+    pointer;
+
+  transition:
+    0.15s ease;
+}
+
+
+/*
+  ロック状態
+*/
+
+.condition-card:disabled {
+  cursor:
+    not-allowed;
+
+  opacity:
+    0.42;
+
+  filter:
+    grayscale(0.5);
+}
+
+
+/*
+  解放された状態
+*/
+
+.condition-card.unlocked {
+  opacity:
+    1;
+
+  filter:
+    none;
+
+  border-color:
+    #8868b4;
+
+  box-shadow:
+    0 2px 6px
+    rgba(75,50,110,0.12);
+}
+
+.condition-card.unlocked:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    #5f3d8b;
+
+  box-shadow:
+    0 5px 10px
+    rgba(75,50,110,0.2);
+}
+
+
+/*
+  条件カードアイコン
+*/
+
+.condition-card-icon {
+  width:
+    28px;
+
+  height:
+    28px;
+
+  flex-shrink:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #9b7ac7,
+      #67479a
+    );
+
+  color:
+    #fff;
+
+  font-size:
+    13px;
+
+  font-weight:
+    1000;
+}
+
+
+/*
+  条件カード文字
+*/
+
+.condition-card-text {
+  flex:
+    1;
+}
+
+
+/*
+  正解
+*/
+
+.condition-card.correct {
+  border-color:
+    #18a878;
+
+  background:
+    linear-gradient(
+      to right,
+      #e7fff5,
+      #d6f8ea
+    );
+
+  color:
+    #096b4a;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(24,168,120,0.18);
+}
+
+
+/*
+  選択
+*/
+
+.condition-card.selected {
+  border-color:
+    #18a878;
+}
+
+
+/*
+  間違い
+*/
+
+.condition-card.wrong {
+  border-color:
+    #d36b62;
+
+  background:
+    #fff2f0;
+}
+
+
+/* ============================================================
+   フッター
+============================================================ */
+
+.game-footer {
+  min-height:
+    60px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+
+  padding:
+    7px 20px;
+
+  background:
+    linear-gradient(
+      to right,
+      #073b88,
+      #0c57a8
+    );
+
+  border-top:
+    4px solid #d6a72f;
+
+  color:
+    white;
+}
+
+
+/* ============================================================
+   QUEST
+============================================================ */
+
+.quest-status {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+}
+
+.status-label {
+  padding:
+    6px 14px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #2576d1,
+      #12478b
+    );
+
+  border:
+    2px solid #d8ae3d;
+
+  border-radius:
+    7px;
+
+  font-size:
+    14px;
+
+  font-weight:
+    1000;
+}
+
+#quest-status {
+  font-size:
+    15px;
+
+  font-weight:
+    900;
+
+  color:
+    #e9f3ff;
+}
+
+
+/* ============================================================
+   フッターボタン
+============================================================ */
+
+.footer-actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+}
+
+
+/* ============================================================
+   リセット
+============================================================ */
+
+.reset-button,
+.give-up-button {
+  padding:
+    8px 16px;
+
+  border:
+    2px solid #d9ae3a;
+
+  border-radius:
+    8px;
+
+  color:
+    #fff;
+
+  font-size:
+    14px;
+
+  font-weight:
+    900;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.reset-button {
+  background:
+    linear-gradient(
+      to bottom,
+      #347fd4,
+      #154d91
+    );
+
+  box-shadow:
+    0 3px 0 #0a2c59;
+}
+
+.give-up-button {
+  background:
+    linear-gradient(
+      to bottom,
+      #9d5050,
+      #6d2929
+    );
+
+  border-color:
+    #d58c8c;
+
+  box-shadow:
+    0 3px 0 #461818;
+}
+
+.reset-button:hover,
+.give-up-button:hover {
+  transform:
+    translateY(-2px);
+}
+
+.reset-button:active,
+.give-up-button:active {
+  transform:
+    translateY(2px);
+}
+
+
+/* ============================================================
+   残り手数警告
+============================================================ */
+
+#remaining-hands.danger,
+#turn-count.danger {
+  color:
+    #d52b25;
+
+  animation:
+    danger-pulse
+    0.8s
+    infinite
+    alternate;
+}
+
+@keyframes danger-pulse {
+
+  from {
+    transform:
+      scale(1);
+  }
+
+  to {
+    transform:
+      scale(1.12);
+  }
+
+}
+
+
+/* ============================================================
+   CLEAR
+============================================================ */
+
+body.stage-clear {
+  animation:
+    clear-flash
+    0.7s
+    ease;
+}
+
+@keyframes clear-flash {
+
+  0% {
+    background:
+      #ffffff;
+  }
+
+  50% {
+    background:
+      #fff1a8;
+  }
+
+  100% {
+    background:
+      #f4f5f7;
+  }
+
+}
+
+
+/* ============================================================
+   GAME OVER
+============================================================ */
+
+body.game-over .turn-info {
+  border-color:
+    #c52d28;
+}
+
+body.game-over #remaining-hands,
+body.game-over #turn-count {
+  color:
+    #d52b25;
+}
+
+
+/* ============================================================
+   オーバーレイ
+============================================================ */
+
+.overlay {
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    rgba(4, 18, 42, 0.76);
+
+  z-index:
+    1000;
+}
+
+.overlay.hidden {
+  display:
+    none;
+}
+
+.overlay-box {
+  width:
+    min(560px, 90vw);
+
+  padding:
+    36px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #f5f8fc
+    );
+
+  border:
+    5px solid #d4a52c;
+
+  border-radius:
+    18px;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 15px 45px
+    rgba(0,0,0,0.4);
+}
+
+.overlay-box h2 {
+  margin:
+    0 0 12px;
+
+  font-size:
+    42px;
+
+  font-weight:
+    1000;
+}
+
+.overlay-box p {
+  margin:
+    0;
+
+  font-size:
+    19px;
+
+  line-height:
+    1.6;
+
+  font-weight:
+    800;
+
+  color:
+    #444;
+}
+
+.overlay-box button {
+  margin-top:
+    20px;
+
+  padding:
+    12px 26px;
+
+  border:
+    0;
+
+  border-radius:
+    9px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #287dd4,
+      #124b91
+    );
+
+  color:
+    #fff;
+
+  font-size:
+    18px;
+
+  font-weight:
+    900;
+
+  cursor:
+    pointer;
+}
+
+
+/* ============================================================
+   SVGロードエラー
+============================================================ */
+
+.svg-loading,
+.svg-error {
+  padding:
+    20px;
+
+  color:
+    #777;
+
+  font-size:
+    16px;
+
+  font-weight:
+    700;
+
+  text-align:
+    center;
+}
+
+
+/* ============================================================
+   スクロールバー
+============================================================ */
+
+.cards-container::-webkit-scrollbar,
+#cards::-webkit-scrollbar {
+  width:
+    8px;
+}
+
+.cards-container::-webkit-scrollbar-track,
+#cards::-webkit-scrollbar-track {
+  background:
+    #edf1f6;
+
+  border-radius:
+    10px;
+}
+
+.cards-container::-webkit-scrollbar-thumb,
+#cards::-webkit-scrollbar-thumb {
+  background:
+    #8aa6c4;
+
+  border-radius:
+    10px;
+}
+
+.cards-container::-webkit-scrollbar-thumb:hover,
+#cards::-webkit-scrollbar-thumb:hover {
+  background:
+    #537da7;
+}
+
+
+/* ============================================================
+   タブレット・小型PC
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  body {
+    font-size:
+      18px;
+  }
+
+  .game-header {
+    min-height:
+      88px;
+
+    padding:
+      9px 16px;
+  }
+
+  .game-main {
+    grid-template-columns:
+      1fr
+      1fr;
+
+    height:
+      auto;
+
+    min-height:
+      auto;
+  }
+
+  .diagram-panel,
+  .proof-panel {
+    min-height:
+      600px;
+  }
+
+  .cards-panel {
+    min-height:
+      560px;
+
+    grid-column:
+      1 / -1;
+  }
+
+  #svg-container {
+    min-height:
+      480px;
+  }
+
+}
+
+
+/* ============================================================
+   タブレット縦
+============================================================ */
+
+@media (max-width: 900px) {
+
+  .game-header {
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap:
+      10px;
+  }
+
+  .game-title {
+    grid-column:
+      1 / -1;
+
+    align-items:
+      center;
+
+    text-align:
+      center;
+  }
+
+  .stage-info {
+    grid-column:
+      1;
+  }
+
+  .turn-info {
+    grid-column:
+      2;
+  }
+
+  .game-main {
+    grid-template-columns:
+      1fr;
+  }
+
+  .diagram-panel,
+  .proof-panel,
+  .cards-panel {
+    grid-column:
+      auto;
+
+    min-height:
+      540px;
+  }
+
+  .cards-panel {
+    min-height:
+      520px;
+  }
+
+  #svg-container {
+    height:
+      480px;
+
+    min-height:
+      480px;
+  }
+
+}
+
+
+/* ============================================================
+   スマートフォン
+============================================================ */
+
+@media (max-width: 800px) {
+
+  body {
+    font-size:
+      16px;
+  }
+
+  .game-header {
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    gap:
+      8px;
+
+    padding:
+      12px;
+  }
+
+  .game-title {
+    align-items:
+      center;
+
+    text-align:
+      center;
+  }
+
+  .game-title h1 {
+    font-size:
+      28px;
+  }
+
+  .game-title p {
+    font-size:
+      13px;
+  }
+
+  .stage-info {
+    width:
+      100%;
+
+    min-height:
+      62px;
+  }
+
+  .turn-info {
+    width:
+      100%;
+
+    min-height:
+      54px;
+  }
+
+  .game-main {
+    width:
+      calc(100% - 16px);
+
+    margin:
+      8px auto;
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      10px;
+
+    height:
+      auto;
+  }
+
+  .diagram-panel,
+  .proof-panel,
+  .cards-panel {
+    min-height:
+      500px;
+  }
+
+  #svg-container {
+    height:
+      420px;
+
+    min-height:
+      420px;
+  }
+
+  .facts-list {
+    grid-template-columns:
+      1fr;
+  }
+
+  .condition-cards {
+    grid-template-columns:
+      1fr;
+  }
+
+  .game-footer {
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+
+    min-height:
+      auto;
+
+    padding:
+      10px;
+  }
+
+  .quest-status {
+    justify-content:
+      center;
+  }
+
+  .footer-actions {
+    flex-direction:
+      column;
+  }
+
+  .reset-button,
+  .give-up-button {
+    width:
+      100%;
+  }
+
+  .goal-text,
+  #goal {
+    font-size:
+      24px;
+  }
+
+  .card-text {
+    font-size:
+      20px;
+  }
+
+}
+
+
+/* ============================================================
+   Stage Select
+   Stage画面と統一したヘッダー
+============================================================ */
+
+
+/* ------------------------------------------------------------
+   Stage Select 全体
+------------------------------------------------------------ */
+
+.stage-select {
+  min-height:
+    100vh;
+
+  background:
+    #f4f6fa;
+}
+
+
+/* ------------------------------------------------------------
+   ヘッダー
+------------------------------------------------------------ */
+
+.stage-select-header {
+  min-height:
+    92px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+
+  align-items:
+    center;
+
+  gap:
+    16px;
+
+  padding:
+    10px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #073b88,
+      #1264bd 55%,
+      #0b3e83
+    );
+
+  border-bottom:
+    4px solid #d7a72f;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.22);
+
+  color:
+    #fff;
+}
+
+
+/* ------------------------------------------------------------
+   左：Proof Quest ロゴ全体
+------------------------------------------------------------ */
+
+.stage-select-logo {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+}
+
+
+/* ------------------------------------------------------------
+   剣＋Proof Quest
+------------------------------------------------------------ */
+
+.stage-select-title {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+}
+
+
+/* ------------------------------------------------------------
+   剣アイコン
+------------------------------------------------------------ */
+
+.stage-select-icon {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex-shrink:
+    0;
+
+  font-size:
+    38px;
+
+  line-height:
+    1;
+
+  color:
+    #fff;
+
+  text-shadow:
+    2px 3px 0 #082b5d;
+}
+
+
+/* ------------------------------------------------------------
+   Proof Quest
+------------------------------------------------------------ */
+
+.stage-select-title h1 {
+  margin:
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    32px;
+
+  line-height:
+    1.1;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    1px;
+
+  color:
+    #fff;
+
+  text-shadow:
+    2px 3px 0 #082b5d;
+}
+
+
+/* ------------------------------------------------------------
+   合同を求めて
+------------------------------------------------------------ */
+
+.stage-select-logo p {
+  margin:
+    4px 0 0 48px;
+
+  font-size:
+    14px;
+
+  font-weight:
+    700;
+
+  color:
+    #dcecff;
+}
+
+
+/* ------------------------------------------------------------
+   中央：QUEST SELECT
+------------------------------------------------------------ */
+
+.stage-select-quest {
+  grid-column:
+    2;
+
+  min-height:
+    68px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    8px 28px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #d92822,
+      #a70f12
+    );
+
+  border:
+    3px solid #f3c34e;
+
+  clip-path:
+    polygon(
+      6% 0,
+      94% 0,
+      100% 50%,
+      94% 100%,
+      6% 100%,
+      0 50%
+    );
+
+  box-shadow:
+    0 4px 0 #711016,
+    0 7px 12px rgba(0, 0, 0, 0.25);
+
+  text-align:
+    center;
+
+  font-size:
+    23px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    2px;
+
+  color:
+    #fff;
+
+  text-shadow:
+    1px 2px 0 #72100e;
+}
+
+
+/* ------------------------------------------------------------
+   旧QUEST SELECT見出しは非表示
+------------------------------------------------------------ */
+
+.stage-list h2 {
+  display:
+    none;
+}
+
+
+/* ------------------------------------------------------------
+   Stage一覧エリア
+------------------------------------------------------------ */
+
+.stage-list {
+  width:
+    min(620px, 90%);
+
+  margin:
+    0 auto;
+
+  padding:
+    42px 0 60px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+}
+
+
+/* ------------------------------------------------------------
+   Stageボタン
+------------------------------------------------------------ */
+
+.stage-select-item {
+  width:
+    100%;
+
+  max-width:
+    520px;
+
+  min-height:
+    76px;
+
+  margin:
+    0 0 16px;
+
+  padding:
+    14px 24px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    20px;
+
+  border:
+    3px solid #d7a72f;
+
+  border-radius:
+    11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #eef4fb
+    );
+
+  box-shadow:
+    0 5px 0 #b6c0cf,
+    0 8px 16px rgba(0, 0, 0, 0.14);
+
+  cursor:
+    pointer;
+
+  text-align:
+    left;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+
+/* ------------------------------------------------------------
+   ホバー
+------------------------------------------------------------ */
+
+.stage-select-item:hover {
+  transform:
+    translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e3f0ff
+    );
+
+  box-shadow:
+    0 7px 0 #aab5c5,
+    0 12px 20px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ------------------------------------------------------------
+   クリック時
+------------------------------------------------------------ */
+
+.stage-select-item:active {
+  transform:
+    translateY(2px);
+
+  box-shadow:
+    0 2px 0 #aab5c5,
+    0 4px 8px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ------------------------------------------------------------
+   Stage番号
+------------------------------------------------------------ */
+
+.stage-select-item .stage-number {
+  flex-shrink:
+    0;
+
+  min-width:
+    100px;
+
+  padding:
+    7px 10px;
+
+  border-radius:
+    7px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #d92822,
+      #a70f12
+    );
+
+  color:
+    #ffe49a;
+
+  font-size:
+    14px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    2px;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 3px 0 #711016;
+}
+
+
+/* ------------------------------------------------------------
+   Stageタイトル
+------------------------------------------------------------ */
+
+.stage-select-item .stage-name {
+  color:
+    #172033;
+
+  font-size:
+    21px;
+
+  font-weight:
+    900;
+
+  line-height:
+    1.3;
+}
+
+
+/* ------------------------------------------------------------
+   Stage Select スマートフォン
+------------------------------------------------------------ */
+
+@media (max-width: 700px) {
+
+  .stage-select-header {
+    grid-template-columns:
+      1fr;
+
+    min-height:
+      auto;
+
+    padding:
+      18px;
+
+    gap:
+      14px;
+  }
+
+  .stage-select-title {
+    gap:
+      8px;
+  }
+
+  .stage-select-icon {
+    font-size:
+      32px;
+  }
+
+  .stage-select-title h1 {
+    font-size:
+      28px;
+  }
+
+  .stage-select-logo p {
+    margin-left:
+      40px;
+
+    font-size:
+      14px;
+  }
+
+  .stage-select-quest {
+    min-height:
+      62px;
+
+    font-size:
+      21px;
+  }
+
+  .stage-list {
+    width:
+      90%;
+
+    padding-top:
+      30px;
+  }
+
+  .stage-select-item {
+    min-height:
+      70px;
+
+    padding:
+      12px 14px;
+
+    gap:
+      12px;
+  }
+
+  .stage-select-item .stage-number {
+    min-width:
+      82px;
+
+    font-size:
+      11px;
+  }
+
+  .stage-select-item .stage-name {
+    font-size:
+      17px;
+  }
+
+}

@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="900"
+     height="650"
+     viewBox="0 0 900 650">
+
+  <defs>
+    <style>
+      .diagram-line {
+        stroke: #333333;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+
+        transition:
+          stroke 0.25s ease,
+          stroke-width 0.25s ease,
+          filter 0.25s ease;
+      }
+
+      .diagram-point {
+        fill: #333333;
+      }
+
+      .point-label {
+        font-family:
+          "Noto Sans JP",
+          "Yu Gothic",
+          "Hiragino Kaku Gothic ProN",
+          Meiryo,
+          sans-serif;
+
+        font-size: 28px;
+        font-weight: 900;
+
+        fill: #172033;
+
+        user-select: none;
+      }
+
+      .highlight {
+        stroke: #e85d04 !important;
+        stroke-width: 10 !important;
+        filter: drop-shadow(
+          0 0 4px rgba(232, 93, 4, 0.35)
+        );
+      }
+
+      .highlight-point {
+        fill: #e85d04 !important;
+      }
+
+      .angle-hidden {
+        opacity: 0;
+      }
+
+      .angle-hidden.highlight {
+        opacity: 1;
+      }
+    </style>
+  </defs>
+
+
+  <!-- =====================================================
+       Stage 03-2
+       合同のやまびこ
+
+       A = (180,500)
+       B = (450,100)
+       C = (720,500)
+       E = (450,500)
+       D = (450,590)
+
+       A・E・C は一直線上
+       B・E・D は一直線上
+
+       △ABE と △CBE
+       ===================================================== -->
+
+
+  <!-- =====================================================
+       角
+       ===================================================== -->
+
+  <!-- ∠ABE -->
+  <path
+    id="angle_ABE"
+    class="angle-hidden"
+    d="
+      M 450 100
+      L 420 145
+      A 54 54 0 0 1 450 154
+      Z
+    "
+  />
+
+  <!-- ∠EBC -->
+  <path
+    id="angle_EBC"
+    class="angle-hidden"
+    d="
+      M 450 100
+      L 450 154
+      A 54 54 0 0 1 480 145
+      Z
+    "
+  />
+
+
+  <!-- =====================================================
+       外側の三角形 ABC
+       ===================================================== -->
+
+  <!-- AB -->
+  <line
+    id="AB"
+    class="diagram-line"
+    x1="180"
+    y1="500"
+    x2="450"
+    y2="100"
+  />
+
+  <!-- BC -->
+  <line
+    id="BC"
+    class="diagram-line"
+    x1="450"
+    y1="100"
+    x2="720"
+    y2="500"
+  />
+
+  <!-- AC -->
+  <line
+    id="AC"
+    class="diagram-line"
+    x1="180"
+    y1="500"
+    x2="720"
+    y2="500"
+  />
+
+
+  <!-- =====================================================
+       内側・補助線
+       ===================================================== -->
+
+  <!-- AD -->
+  <line
+    id="AD"
+    class="diagram-line"
+    x1="180"
+    y1="500"
+    x2="450"
+    y2="590"
+  />
+
+  <!-- CD -->
+  <line
+    id="CD"
+    class="diagram-line"
+    x1="720"
+    y1="500"
+    x2="450"
+    y2="590"
+  />
+
+  <!-- =====================================================
+       BD
+       =====================================================
+
+       BDはBE + EDで構成する。
+       1本のBDを重ねて描かないことで、
+       BEのハイライトが正しく表示される。
+       ===================================================== -->
+
+  <!-- BE -->
+  <line
+    id="BE"
+    class="diagram-line"
+    x1="450"
+    y1="100"
+    x2="450"
+    y2="500"
+  />
+
+  <!-- ED -->
+  <line
+    id="ED"
+    class="diagram-line"
+    x1="450"
+    y1="500"
+    x2="450"
+    y2="590"
+  />
+
+
+  <!-- =====================================================
+       点
+       ===================================================== -->
+
+  <!-- A -->
+  <circle
+    id="point_A"
+    class="diagram-point"
+    cx="180"
+    cy="500"
+    r="6"
+  />
+
+  <!-- B -->
+  <circle
+    id="point_B"
+    class="diagram-point"
+    cx="450"
+    cy="100"
+    r="6"
+  />
+
+  <!-- C -->
+  <circle
+    id="point_C"
+    class="diagram-point"
+    cx="720"
+    cy="500"
+    r="6"
+  />
+
+  <!-- E -->
+  <circle
+    id="point_E"
+    class="diagram-point"
+    cx="450"
+    cy="500"
+    r="6"
+  />
+
+  <!-- D -->
+  <circle
+    id="point_D"
+    class="diagram-point"
+    cx="450"
+    cy="590"
+    r="6"
+  />
+
+
+  <!-- =====================================================
+       点のラベル
+       ===================================================== -->
+
+  <!-- A -->
+  <text
+    id="label_A"
+    class="point-label"
+    x="145"
+    y="515"
+  >A</text>
+
+  <!-- B -->
+  <text
+    id="label_B"
+    class="point-label"
+    x="438"
+    y="70"
+  >B</text>
+
+  <!-- C -->
+  <text
+    id="label_C"
+    class="point-label"
+    x="740"
+    y="515"
+  >C</text>
+
+  <!-- E -->
+  <text
+    id="label_E"
+    class="point-label"
+    x="470"
+    y="490"
+  >E</text>
+
+  <!-- D -->
+  <text
+    id="label_D"
+    class="point-label"
+    x="470"
+    y="630"
+  >D</text>
+
+</svg>

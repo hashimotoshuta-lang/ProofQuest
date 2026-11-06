@@ -1,0 +1,110 @@
+{
+  "stage": 1,
+  "id": "stage01",
+  "title": "鏡合わせの双子",
+  "maxHands": 5,
+
+  "goal": "△ABD ≡ △ACD",
+
+  "figureFacts": [
+    "AB = AC",
+    "BD = CD"
+  ],
+
+  "cards": [
+    {
+      "id": "ab_ac",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AB = AC",
+      "highlight": [
+        "line_AB",
+        "line_AC"
+      ]
+    },
+    {
+      "id": "bd_cd",
+      "type": "辺",
+      "icon": "辺",
+      "text": "BD = CD",
+      "highlight": [
+        "line_BD",
+        "line_CD"
+      ]
+    },
+    {
+      "id": "ad_ad",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AD = AD",
+      "highlight": [
+        "line_AD"
+      ]
+    }
+  ],
+
+  "correctCombo": [
+    "ab_ac",
+    "bd_cd",
+    "ad_ad"
+  ],
+
+  "dummyCards": [
+    {
+      "id": "angle_bc",
+      "type": "角",
+      "icon": "角",
+      "text": "∠ABD = ∠ACD",
+      "highlight": []
+    },
+    {
+      "id": "angle_adbc",
+      "type": "角",
+      "icon": "角",
+      "text": "∠ADB = ∠ADC",
+      "highlight": []
+    },
+    {
+      "id": "bc_ad",
+      "type": "辺",
+      "icon": "辺",
+      "text": "BC = AD",
+      "highlight": []
+    }
+  ],
+
+  "congruenceCards": [
+    {
+      "id": "sss",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "3組の辺がそれぞれ等しい"
+    },
+    {
+      "id": "sas",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "2組の辺とその間の角がそれぞれ等しい"
+    },
+    {
+      "id": "asa",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "1組の辺とその両端の角がそれぞれ等しい"
+    },
+    {
+      "id": "rhs_acute",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と1つの鋭角がそれぞれ等しい"
+    },
+    {
+      "id": "rhs_leg",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と他の1辺がそれぞれ等しい"
+    }
+  ],
+
+  "correctCongruenceCard": "sss"
+}

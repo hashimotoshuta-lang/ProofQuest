@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Proof Quest - 合同を求めて</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <!-- ========================================================
+       HEADER
+  ========================================================= -->
+
+  <header class="game-header">
+
+    <div class="game-title">
+
+      <h1>⚔ Proof Quest</h1>
+
+      <p>合同を求めて</p>
+
+    </div>
+
+
+    <div class="stage-info">
+
+      <div id="stage-number">
+        STAGE 01
+      </div>
+
+      <div id="stage-title">
+        鏡合わせの双子
+      </div>
+
+    </div>
+
+
+    <div class="turn-info">
+
+      <span class="turn-label">
+        残り手数
+      </span>
+
+      <span id="remaining-hands">
+        5
+      </span>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ========================================================
+       MAIN GAME
+  ========================================================= -->
+
+  <main class="game-main">
+
+
+    <!-- ======================================================
+         LEFT : DIAGRAM
+    ======================================================= -->
+
+    <section class="diagram-panel">
+
+      <div class="panel-title diagram-title">
+        図形
+      </div>
+
+
+      <!-- SVGを読み込む場所 -->
+
+      <div id="svg-container">
+
+        <div class="svg-loading">
+          図形を読み込んでいます……
+        </div>
+
+      </div>
+
+
+      <!-- 図形についての情報 -->
+
+      <div class="figure-facts">
+
+        <div class="sub-panel-title">
+          今回の図形について
+        </div>
+
+
+        <div
+          id="figure-facts-list"
+          class="facts-list"
+        >
+          <!--
+            JavaScriptから生成
+
+            例：
+
+            AB = AC
+            BD = CD
+            AD は共通の辺
+            △ABC は二等辺三角形
+          -->
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         CENTER : PROOF
+    ======================================================= -->
+
+    <section class="proof-panel">
+
+
+      <!-- 証明タイトル -->
+
+      <div class="panel-header">
+
+        <h2>
+          証明を組み立てる
+        </h2>
+
+        <div
+          id="goal"
+          class="goal-text"
+        >
+          △ABD ≡ △ACD
+        </div>
+
+      </div>
+
+
+
+      <!-- ====================================================
+           必要な証拠
+      ===================================================== -->
+
+      <div class="congruence-area">
+
+        <div class="section-ribbon">
+          必要な証拠
+        </div>
+
+
+        <div
+          id="evidence-slots"
+          class="evidence-slots"
+        >
+
+          <!--
+            JavaScriptから生成。
+
+            Stageによって必要な証拠数が変わるため、
+            HTMLでは固定しない。
+          -->
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ====================================================
+           合同条件
+      ===================================================== -->
+
+      <div class="condition-area">
+
+  <div class="condition-label">
+    合同条件を選ぶ
+  </div>
+
+  <div
+    id="condition-cards"
+    class="condition-cards"
+  >
+    <!-- script.jsから生成 -->
+  </div>
+
+</div>
+
+
+
+      <!-- ====================================================
+           MESSAGE
+      ===================================================== -->
+
+      <div
+        id="game-message"
+        class="game-message"
+      >
+
+        <div
+          id="message-text"
+          class="message-text"
+        >
+          図形を観察して、
+          証明に必要な証拠を選ぼう！
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         RIGHT : CARDS
+    ======================================================= -->
+
+    <section class="cards-panel">
+
+
+      <div class="panel-header green-header">
+
+        <h2>
+          証拠カード
+        </h2>
+
+        <p>
+          図形から必要な情報を見つけよう
+        </p>
+
+      </div>
+
+
+      <!-- ====================================================
+           証拠カード一覧
+      ===================================================== -->
+
+      <div
+        id="cards"
+        class="cards-container"
+      >
+
+        <!--
+          JavaScriptから生成。
+
+          Stage01なら、
+
+          AB = AC
+          BD = CD
+          AD = AD
+
+          などが表示される。
+
+          ダミーカードもここに生成される。
+        -->
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer class="game-footer">
+
+
+    <div class="quest-status">
+
+      <span class="status-label">
+        QUEST
+      </span>
+
+
+      <span id="quest-status">
+        証明を完成させよう
+      </span>
+
+    </div>
+
+
+
+    <div class="footer-actions">
+
+      <button
+        id="reset-button"
+        class="reset-button"
+        type="button"
+      >
+        ↻ やり直す
+      </button>
+
+
+      <button
+        id="give-up-button"
+        class="give-up-button"
+        type="button"
+      >
+        × あきらめる
+      </button>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ========================================================
+       GAME OVER / CLEAR OVERLAY
+  ========================================================= -->
+
+  <div
+    id="overlay"
+    class="overlay hidden"
+  >
+
+    <div class="overlay-box">
+
+
+      <h2 id="overlay-title">
+        QUEST CLEAR!
+      </h2>
+
+
+      <p id="overlay-text">
+        合同の証明が完成した！
+      </p>
+
+
+      <div
+        id="clear-result"
+        class="clear-result"
+      >
+      </div>
+
+
+      <div class="overlay-actions">
+
+        <button
+          id="overlay-close"
+          type="button"
+        >
+          もう一度挑戦
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+{
+  "stage": 3,
+  "id": "stage03-2",
+  "title": "合同のやまびこ",
+  "maxHands": 5,
+
+  "goal": "△ABE ≡ △CBE",
+
+  "condition": "2組の辺とその間の角がそれぞれ等しい",
+
+  "figureFacts": [
+    "△ABD ≡ △CBD(3-1から)"
+  ],
+
+  "cards": [
+    {
+      "id": "ab_bc",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AB = CB",
+      "highlight": [
+        "AB",
+        "BC"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "be_common",
+      "type": "辺",
+      "icon": "辺",
+      "text": "BE = BE",
+      "highlight": [
+        "BE"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "angle_abe_ebc",
+      "type": "角",
+      "icon": "角",
+      "text": "∠ABE = ∠CBE",
+      "highlight": [
+        "angle_ABE",
+        "angle_EBC"
+      ],
+      "usable": true
+    }
+  ],
+
+  "correctCombo": [
+    "ab_bc",
+    "be_common",
+    "angle_abe_ebc"
+  ],
+
+  "dummyCards": [
+    {
+      "id": "ae_ce",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AE = CE",
+      "highlight": [
+        "AE",
+        "CE"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "ad_cd",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AD = CD",
+      "highlight": [
+        "AD",
+        "CD"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "angle_aeb_ceb",
+      "type": "角",
+      "icon": "角",
+      "text": "∠AEB = ∠CEB",
+      "highlight": [
+        "angle_AEB",
+        "angle_CEB"
+      ],
+      "usable": true
+    }
+  ],
+
+  "congruenceCards": [
+    {
+      "id": "sss",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "3組の辺がそれぞれ等しい"
+    },
+    {
+      "id": "sas",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "2組の辺とその間の角がそれぞれ等しい"
+    },
+    {
+      "id": "asa",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "1組の辺とその両端の角がそれぞれ等しい"
+    },
+    {
+      "id": "rhs_acute",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と1つの鋭角がそれぞれ等しい"
+    },
+    {
+      "id": "rhs_leg",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と他の1辺がそれぞれ等しい"
+    }
+  ],
+
+  "correctCongruenceCard": "sas",
+
+  "reward": {
+    "type": "side",
+    "id": "ae_ce",
+    "text": "AE = CE",
+    "description": "△ABE ≡ △CBE より、対応する辺が等しい。"
+  }
+}

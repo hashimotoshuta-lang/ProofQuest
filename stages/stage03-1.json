@@ -1,0 +1,127 @@
+{
+  "stage": 3,
+  "id": "stage03-1",
+  "title": "合同のやまびこ",
+  "maxHands": 4,
+
+  "goal": "△ABD ≡ △CBD",
+
+  "condition": "3組の辺がそれぞれ等しい",
+
+  "figureFacts": [
+    "AB = CB",
+    "AD = CD"
+  ],
+
+  "cards": [
+    {
+      "id": "ab_bc",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AB = CB",
+      "highlight": [
+        "AB",
+        "BC"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "ad_cd",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AD = CD",
+      "highlight": [
+        "AD",
+        "CD"
+      ],
+      "usable": true
+    },
+
+    {
+      "id": "bd_common",
+      "type": "辺",
+      "icon": "辺",
+      "text": "BD = BD",
+      "highlight": [
+        "BD"
+      ],
+      "usable": true
+    }
+  ],
+
+  "correctCombo": [
+    "ab_bc",
+    "ad_cd",
+    "bd_common"
+  ],
+
+  "dummyCards": [
+    {
+      "id": "ab_ad",
+      "type": "辺",
+      "icon": "辺",
+      "text": "AB = AD",
+      "usable": true
+    },
+
+    {
+      "id": "bc_cd",
+      "type": "辺",
+      "icon": "辺",
+      "text": "BC = CD",
+      "usable": true
+    },
+
+    {
+      "id": "angle_bad_bdc",
+      "type": "角",
+      "icon": "角",
+      "text": "∠BAD =∠BCD",
+      "highlight": [
+        "angle_BAD",
+        "angle_BDC"
+      ],
+      "usable": true
+    }
+  ],
+
+  "congruenceCards": [
+    {
+      "id": "sss",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "3組の辺がそれぞれ等しい"
+    },
+
+    {
+      "id": "sas",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "2組の辺とその間の角がそれぞれ等しい"
+    },
+
+    {
+      "id": "asa",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "1組の辺とその両端の角がそれぞれ等しい"
+    },
+
+    {
+      "id": "rhs_acute",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と1つの鋭角がそれぞれ等しい"
+    },
+
+    {
+      "id": "rhs_leg",
+      "type": "合同条件",
+      "icon": "★",
+      "text": "直角三角形で斜辺と他の1辺がそれぞれ等しい"
+    }
+  ],
+
+  "correctCongruenceCard": "sss"
+}

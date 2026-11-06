@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 600 420"
+  preserveAspectRatio="xMidYMid meet"
+>
+
+  <!-- =========================================================
+       Proof Quest
+       Stage 01
+       鏡合わせの双子
+
+       図形：
+       △ABD と △ACD
+
+       使用する線分：
+       AB
+       AC
+       BD
+       CD
+       AD
+
+       ※ 等長記号・平行記号は表示しない
+       ※ ハイライトはJavaScriptから制御
+  ========================================================== -->
+
+
+  <!-- =========================================================
+       スタイル
+  ========================================================== -->
+
+  <style>
+
+    /*
+      基本の線
+    */
+    .diagram-line {
+      stroke: #333333;
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+
+      transition:
+        stroke 0.25s ease,
+        stroke-width 0.25s ease,
+        filter 0.25s ease;
+    }
+
+
+    /*
+      点
+    */
+    .diagram-point {
+      fill: #333333;
+    }
+
+
+    /*
+      点のラベル
+    */
+    .point-label {
+      font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        Meiryo,
+        sans-serif;
+
+      font-size: 28px;
+      font-weight: 900;
+
+      fill: #172033;
+
+      user-select: none;
+    }
+
+
+    /*
+      ハイライト
+      JavaScriptから .highlight を付与する
+    */
+    .highlight {
+      stroke: #00BCD4 !important;
+      stroke-width: 11px !important;
+
+      filter:
+        drop-shadow(0 0 5px rgba(0, 188, 212, 0.55))
+        drop-shadow(0 0 10px rgba(0, 188, 212, 0.35));
+    }
+
+
+    /*
+      ハイライトされた点
+      必要になった場合にJavaScriptから使用可能
+    */
+    .point-highlight {
+      fill: #00BCD4 !important;
+
+      filter:
+        drop-shadow(0 0 6px rgba(0, 188, 212, 0.65));
+    }
+
+  </style>
+
+
+  <!-- =========================================================
+       図形
+  ========================================================== -->
+
+
+  <!--
+       AB
+       A → B
+  -->
+  <line
+    id="line_AB"
+    class="diagram-line"
+    x1="300"
+    y1="60"
+    x2="110"
+    y2="340"
+  />
+
+
+  <!--
+       AC
+       A → C
+  -->
+  <line
+    id="line_AC"
+    class="diagram-line"
+    x1="300"
+    y1="60"
+    x2="490"
+    y2="340"
+  />
+
+
+  <!--
+       BD
+       B → D
+  -->
+  <line
+    id="line_BD"
+    class="diagram-line"
+    x1="110"
+    y1="340"
+    x2="300"
+    y2="205"
+  />
+
+
+  <!--
+       CD
+       C → D
+  -->
+  <line
+    id="line_CD"
+    class="diagram-line"
+    x1="490"
+    y1="340"
+    x2="300"
+    y2="205"
+  />
+
+
+  <!--
+       AD
+       A → D
+
+       △ABD と △ACD の共通辺
+  -->
+  <line
+    id="line_AD"
+    class="diagram-line"
+    x1="300"
+    y1="60"
+    x2="300"
+    y2="205"
+  />
+
+
+  <!-- =========================================================
+       点
+  ========================================================== -->
+
+
+  <circle
+    id="point_A"
+    class="diagram-point"
+    cx="300"
+    cy="60"
+    r="9"
+  />
+
+  <circle
+    id="point_B"
+    class="diagram-point"
+    cx="110"
+    cy="340"
+    r="9"
+  />
+
+  <circle
+    id="point_C"
+    class="diagram-point"
+    cx="490"
+    cy="340"
+    r="9"
+  />
+
+  <circle
+    id="point_D"
+    class="diagram-point"
+    cx="300"
+    cy="205"
+    r="9"
+  />
+
+
+  <!-- =========================================================
+       ラベル
+  ========================================================== -->
+
+
+  <!-- A -->
+  <text
+    id="label_A"
+    class="point-label"
+    x="300"
+    y="32"
+    text-anchor="middle"
+  >
+    A
+  </text>
+
+
+  <!-- B -->
+  <text
+    id="label_B"
+    class="point-label"
+    x="78"
+    y="366"
+    text-anchor="middle"
+  >
+    B
+  </text>
+
+
+  <!-- C -->
+  <text
+    id="label_C"
+    class="point-label"
+    x="522"
+    y="366"
+    text-anchor="middle"
+  >
+    C
+  </text>
+
+
+  <!-- D -->
+  <text
+    id="label_D"
+    class="point-label"
+    x="330"
+    y="201"
+    text-anchor="start"
+  >
+    D
+  </text>
+
+
+</svg>
